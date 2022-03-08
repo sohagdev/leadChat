@@ -8,6 +8,9 @@ import { useAuth } from '../contexts/AuthContext'
 
 import { auth } from '../firebase'
 
+import logo from '../images/logo-white.svg'
+import logOut from '../images/logout.svg'
+
 export default function Chats() {
     const didMountRef = useRef(false)
     const [loading, setLoading] = useState(true)
@@ -80,14 +83,17 @@ export default function Chats() {
     return (
         <div className='chats-page'>
             <div className='nav-bar'>
-                <div className='logo-tab'>LeadChat</div>
+                <div className='logo-tab'>
+                    <img src={logo} width='120px' alt='logo' />
+                </div>
 
                 <div onClick={handleLogout} className='logout-tab'>
-                    Logout
+                    <img src={logOut} width='30px' alt='logout' />
                 </div>
             </div>
 
             <ChatEngine
+                style={{ color: '#ADEFD1 important!' }}
                 height='calc(100vh - 66px)'
                 projectID={process.env.REACT_APP_CHAT_ENGINE_ID}
                 userName={user.email}
